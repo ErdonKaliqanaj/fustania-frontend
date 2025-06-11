@@ -1,0 +1,17 @@
+{
+  "welcome": "Mirë se vini në Fustania",
+  "register": "Regjistrohu",
+  "name": "Emri",
+  "surname": "Mbiemri",
+  "email": "Email",
+  "password": "Fjalëkalimi",
+  "country": "Shteti",
+  "submit": "Dërgo",
+  "select_language": "Zgjidh Gjuhën",
+  "english":"Anglisht",
+  "albanian":"Shqip",
+  "home":"Kreu",
+  "dresses":"Fustanet",
+  "access_denied":"refuzohet aksesi"
+
+}

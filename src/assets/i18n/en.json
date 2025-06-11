@@ -1,0 +1,16 @@
+{
+    "welcome":"Welcome to Fustania",
+    "register": "Register",
+  "name": "Name",
+  "surname": "Surname",
+  "email": "Email",
+  "password": "Password",
+  "country": "Country",
+  "submit": "Submit",
+  "select_language":"Select Language",
+  "english":"English",
+  "albanian":"Albanian",
+  "home":"home",
+  "dresses":"dresses",
+  "access_denied":"access_denied"
+}
