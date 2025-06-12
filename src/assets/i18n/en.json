@@ -12,5 +12,8 @@
   "albanian":"Albanian",
   "home":"home",
   "dresses":"dresses",
-  "access_denied":"access_denied"
+  "access_denied":"access_denied",
+  "login": "Login",
+  "login_success": "Login successful!",
+  "login_failed": "Login failed."
 }

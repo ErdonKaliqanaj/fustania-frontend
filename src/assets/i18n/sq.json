@@ -12,6 +12,9 @@
   "albanian":"Shqip",
   "home":"Kreu",
   "dresses":"Fustanet",
-  "access_denied":"refuzohet aksesi"
+  "access_denied":"refuzohet aksesi",
+  "login": "Identifikohu",
+  "login_success": "Identifikimi u krye me sukses!",
+  "login_failed": "Identifikimi dështoi."
 
 }
