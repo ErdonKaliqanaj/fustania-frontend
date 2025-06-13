@@ -1,25 +1,29 @@
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-function LanguageSwitcher(){
-    const {i18n, t} = useTranslation();
+const LanguageSwitcher = () => {
+  const { t, i18n } = useTranslation();
 
-    const changeLanguage = (lng) =>{
-        i18n.changeLanguage(lng);
-        localStorage.setItem('language', lng);
-    }
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
-    return(
-        <div className="inline-block">
-            <select value={i18n.language} onChange={(e) => changeLanguage(e.target.value)}
-                aria-label={t('select_language')}
-                className="px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm cursor-pointer">
-                   <option value="en">{t('english')}</option>
-                   <option value="sq">{t('albanian')}</option>
-
-            </select>
-
-        </div>
-    )
-}
+  return (
+    <div className="p-4">
+      <button
+        onClick={() => changeLanguage('en')}
+        className="mr-2 px-2 py-1 bg-blue-500 text-white rounded"
+      >
+        {t('english')}
+      </button>
+      <button
+        onClick={() => changeLanguage('sq')}
+        className="px-2 py-1 bg-blue-500 text-white rounded"
+      >
+        {t('albanian')}
+      </button>
+    </div>
+  );
+};
 
 export default LanguageSwitcher;

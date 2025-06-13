@@ -1,21 +1,31 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Register from './pages/Register';
-import ClientProfile from './pages/ClientProfile';
-import AdminDashboard from './pages/AdminDashboard';
-import Dresses from './pages/Dresses';
+import { Routes, Route } from 'react-router-dom';
+import AdminLayout from './components/layouts/AdminLayout';
+import ClientLayout from './components/layouts/ClientLayout';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './components/LanguageSwitcher';
+import Register from './components/Register';
+import DressList from './components/DressList';
 
 function App() {
+  const { t } = useTranslation();
+
   return (
-    <Router>
+    <div className="min-h-screen">
+      <LanguageSwitcher />
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<ClientProfile />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/dresses" element={<Dresses />} />
-        <Route path="/" element={<Dresses />} />
+        <Route path="/" element={<ClientLayout />}>
+          <Route path="profile" element={<h2>{t('profile')}</h2>} />
+          <Route path="publications" element={<h2>{t('publications')}</h2>} />
+          <Route path="register" element={<Register />} />
+          <Route path="dresses" element={<DressList />} />
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="clients" element={<h2>{t('clients')}</h2>} />
+          <Route path="lists" element={<h2>{t('lists')}</h2>} />
+        </Route>
       </Routes>
-    </Router>
+    </div>
   );
 }
 

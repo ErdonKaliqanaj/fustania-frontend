@@ -1,36 +1,31 @@
-import { Outlet, Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../LanguageSwitcher";
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-function AdminLayout(){
-    const{t} = useTranslation();
-    const isAdmin = localStorage.getItem('role') === 'SUPER_ADMIN';
-    
-    if(!isAdmin){
-        return <div className="p-6 text-red-600">{t('access_denied')}</div>
-    }
+const AdminLayout = () => {
+  const { t } = useTranslation();
 
-    return(
-        <div className="bg-gray-800 p-4">
-            <header className="bg-gray-800 p-4">
-            <nav className="flex items-center justify-between max-w-6xl mx-auto">
-                <div className="flex ga[-4">
-                    <Link to="/admin/users" className="text-white hover:text-gray-300">{t('users')}
-                    </Link>
-                    <Link to="/admin/dresses" className="text-white hover:text-gray-300">{t('dresses')}
-                    </Link>
-                    <Link to="/" className="text-white hover:text-gray-300">{t('logut')}
-                    </Link>
-                </div>
-                <LanguageSwitcher/>
-            </nav>
-            </header>
-            <main className="p-6 max-w-6xl mx-auto">
-         <Outlet/>
-            </main>
-        </div>
-    )
-
-}
+  return (
+    <div className="min-h-screen bg-gray-200">
+      <nav className="bg-green-500 p-4 text-white">
+        <ul className="flex space-x-4">
+          <li>
+            <Link to="/admin/clients" className="hover:underline">
+              {t('clients')}
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin/lists" className="hover:underline">
+              {t('lists')}
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <div className="container mx-auto p-4">
+        <Outlet /> 
+      </div>
+    </div>
+  );
+};
 
 export default AdminLayout;
