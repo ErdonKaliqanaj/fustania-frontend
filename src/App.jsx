@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import Register from './components/Register';
 import DressList from './components/DressList';
+import DressDetail from './components/DressDetail';
+import SellDress from './components/SellDress';
+
 
 function App() {
   const { t } = useTranslation();
@@ -19,6 +22,8 @@ function App() {
           <Route path="publications" element={<h2>{t('publications')}</h2>} />
           <Route path="register" element={<Register />} />
           <Route path="dresses" element={<DressList />} />
+          <Route path="dresses/:id" element={<DressDetail />} />
+          <Route path="sell" element={<SellDress />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="clients" element={<h2>{t('clients')}</h2>} />

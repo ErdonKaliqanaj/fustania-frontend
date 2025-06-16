@@ -1,112 +1,154 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import { useTranslation } from "react-i18next";
+import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 const DressList = () =>{
     const { t } = useTranslation();
+    const[dresses, setDresses] = useState([]);
     const[filters, setFilters] = useState({
         designer:'',
-        sizeRange:'',
+        size:'',
         maxPrice:'',
         color:'',
-        country:'',
-        city:''
+        shteti:'',
+        qyteti:''
     });
+    const[loading, setLoading] = useState(false);
 
-    //demo e fustanave
-    const [dresses] = useState([
-    {id:1, name:'Red Dress', designer:'Valdrin Sahiti', size:'M', price:50, color:'red', country:'Kosove', city:'Istog'},
-    {id:2, name:'Blue Gown', designer:'Drenusha Xharra', size:"L", price:150, color:'blue', country:"Kosove", city:'Kline'},
-]);
+  useEffect(() => {
+    const fetchDresses = async () => {
+      setLoading(true);
+      try{
+           const response = await axios.get('http://localhost:8080/api/dresses', {
+            params:filters,
+           });
+           setDresses(response.data);
+      }catch(error){
+        console.error('Error fetching dresses:', error);
+      } finally{
+        setLoading(false)
+      }
+    };
+    fetchDresses();
+  }, [filters]);
 
-const handleFilterChange = (e) =>{
-  setFilters({...filters, [e.target.name]: e.target.value});
-};
+  const handleFilterChange = (e) => {
+    setFilters({...filters, [e.target.name]: e.target.value})
+  }
 
-const filteredDresses = dresses.filter(dress => {
-    return(
-        (filters.designer === '' || dress.designer.toLowerCase().includes(filters.designer.toLowerCase())) &&
-        (filters.sizeRange === '' || dress.size === filters.sizeRange) &&
-        (filters.maxPrice === '' || dress.price <= parseInt(filters.maxPrice)) &&
-        (filters.color === '' || dress.color.toLowerCase().includes(filters.color.toLowerCase())) &&
-        (filters.country === '' || dress.country === filters.country) &&
-        (filters.city === '' || dress.city.toLowerCase.includes(filters.city.toLowerCase()))
-    );
-})
 return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <h2 className="text-2xl font-bold mb-4">{t('dressList')}</h2>
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">{t('filters')}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">{t('allDresses')}</h2>
+
+      {/* Formulari i Filtrimit */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-gray-100 rounded-lg">
+        <div>
+          <label className="block text-sm font-medium">{t('designer')}</label>
           <input
-            type="text"
             name="designer"
             value={filters.designer}
             onChange={handleFilterChange}
-            placeholder={t('designer')}
-            className="p-2 border rounded"
+            className="w-full p-2 border rounded"
+            placeholder={t('enterDesigner')}
           />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">{t('size')}</label>
           <select
-            name="sizeRange"
-            value={filters.sizeRange}
+            name="size"
+            value={filters.size}
             onChange={handleFilterChange}
-            className="p-2 border rounded"
+            className="w-full p-2 border rounded"
           >
-            <option value="">{t('allSizes')}</option>
+            <option value="">{t('selectSize')}</option>
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
             <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
-            <option value="3XL">3XL</option>
           </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium">{t('maxPrice')}</label>
           <input
-            type="number"
             name="maxPrice"
+            type="number"
             value={filters.maxPrice}
             onChange={handleFilterChange}
-            placeholder={t('maxPrice')}
-            className="p-2 border rounded"
+            className="w-full p-2 border rounded"
+            placeholder={t('enterMaxPrice')}
           />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">{t('color')}</label>
           <input
-            type="text"
             name="color"
             value={filters.color}
             onChange={handleFilterChange}
-            placeholder={t('color')}
-            className="p-2 border rounded"
+            className="w-full p-2 border rounded"
+            placeholder={t('enterColor')}
           />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">{t('country')}</label>
           <select
-            name="country"
-            value={filters.country}
+            name="shteti"
+            value={filters.shteti}
             onChange={handleFilterChange}
-            className="p-2 border rounded"
+            className="w-full p-2 border rounded"
           >
-            <option value="">{t('allCountries')}</option>
-            <option value="KOSOVA">Kosovë</option>
+            <option value="">{t('selectCountry')}</option>
+            <option value="KOSOVE">{t('kosovo')}</option>
+            <option value="SHQIPERI">{t('albania')}</option>
+            <option value="MAQEDONI">{t('macedonia')}</option>
           </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium">{t('city')}</label>
           <input
-            type="text"
-            name="city"
-            value={filters.city}
+            name="qyteti"
+            value={filters.qyteti}
             onChange={handleFilterChange}
-            placeholder={t('city')}
-            className="p-2 border rounded"
+            className="w-full p-2 border rounded"
+            placeholder={t('enterCity')}
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {filteredDresses.map(dress => (
-          <div key={dress.id} className="bg-white p-4 rounded shadow">
-            <h3 className="text-lg font-semibold">{dress.name}</h3>
-            <p>{t('designer')}: {dress.designer}</p>
-            <p>{t('size')}: {dress.size}</p>
-            <p>{t('price')}: ${dress.price}</p>
-            <p>{t('color')}: {dress.color}</p>
-            <p>{t('location')}: {dress.city}, {dress.country}</p>
-          </div>
-        ))}
-      </div>
+
+      {/* Lista e Fustaneve */}
+      {loading ? (
+        <p>{t('loading')}</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {dresses.length === 0 ? (
+            <p>{t('noDressesFound')}</p>
+          ) : (
+            dresses.map((dress) => (
+              <div
+                key={dress.id}
+                className="border rounded-lg overflow-hidden shadow-lg"
+              >
+                <img
+                  src={dress.photoUrl}
+                  alt={dress.description}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{dress.description}</h3>
+                  <p className="text-gray-600">{t('price')}: {dress.price} €</p>
+                  <p className="text-gray-600">{t('size')}: {dress.size}</p>
+                  <Link
+                    to={`/dresses/${dress.id}`}
+                    className="mt-2 inline-block text-blue-600 hover:underline"
+                  >
+                    {t('viewDetails')}
+                  </Link>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 }
