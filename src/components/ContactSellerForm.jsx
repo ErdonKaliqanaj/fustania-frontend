@@ -1,105 +1,102 @@
-// src/components/ContactSellerForm.jsx
-import { useState } from 'react';
-import axios from 'axios';
-import { useTranslation } from 'react-i18next';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
 
-const ContactSellerForm = ({ dressId, sellerId }) => {
-  const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-    offerAmount: '',
-  });
-  const [submitStatus, setSubmitStatus] = useState(null);
+const ContactSellerForm = ({dressId}) => {
+    const {t} = useTranslation();
+    const{register, handleSubmit, reset, formState: {errors}} = useForm();
+    const [status, setStatus] = useState(null);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const onSubmit = async (data) => {
+        try{
+            const payload = {
+                content: data.content,
+                offerPrice: data.offerPrice ? parseFloat(data.offerPrice) : null,
+                senderEmail: data.email,
+                senderName: data.name,
+                dressId: dressId,
+            };
+            await axios.post('http://localhost:8080/api/messages', payload);
+            setStatus({type: 'success', message: t('messageSuccess')});
+        reset();
+        } catch (error){
+            setStatus({type:'error', message: t('messageError')});
+        }
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('http://localhost:8080/api/contact', {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-        offerAmount: formData.offerAmount ? parseFloat(formData.offerAmount) : null,
-        dressId,
-        sellerId,
-      });
-      setSubmitStatus(t('messageSent'));
-      setFormData({ name: '', email: '', message: '', offerAmount: '' });
-    } catch (error) {
-      setSubmitStatus(t('errorSendingMessage'));
-    }
-  };
+    return(
+        <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
+            <h2 className="text-xl font-semibold mb-4 text-gray-800">{t('contactSeller')}</h2>
+        <from onSubmit={handleSubmit(onSubmit)} 
+        className="space-y-4">
+            <div>
+                <label className="block text-sm font-medium text-gray-700">{t('sellerName')}</label>
+                <input 
+                type="text"
+                {...register('name', { required: t('nameRequired')})}
+                className="mt-1 w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                placeholder={t('enterName')} 
+                />
+                {errors.name && <span className="text-red-600 text-sm">
+                    {errors.name.message}</span>}
+            </div>
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium">{t('name')}</label>
-        <input
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border rounded"
-          placeholder={t('enterName')}
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium">{t('email')}</label>
-        <input
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border rounded"
-          placeholder={t('enterEmail')}
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium">{t('message')}</label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border rounded"
-          rows="4"
-          placeholder={t('enterMessage')}
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium">{t('offerAmount')}</label>
-        <input
-          name="offerAmount"
-          type="number"
-          value={formData.offerAmount}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          placeholder={t('enterOfferAmount')}
-        />
-      </div>
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        {t('send')}
-      </button>
-      {submitStatus && (
-        <p
-          className={`mt-2 ${
-            submitStatus.includes('error') ? 'text-red-600' : 'text-green-600'
-          }`}
-        >
-          {submitStatus}
-        </p>
-      )}
-    </form>
-  );
-};
+            <div>
+                <label className="block text-sm font-medium text-gray-700">{t('email')}</label>
+                <input
+                type="email"
+                {...register('email', {
+                    required: t('emailRequired'),
+                    pattern:{
+                       value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: t('emailInvalid'), 
+                    },
+                })}
+                className="mt-1 w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                placeholder={t('enterEmail')}
+                />
+                {errors.email && <span className="text-red-600 text-sm">
+                    {errors.email.message}</span>}
+            </div>
+                
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">{t('message')}</label>
+                    <textarea
+                    {...register('content', {required: t('messageRequired') })}
+                    className="mt-1 w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-b-blue-500 "
+                    placeholder={t('enterMessage')}
+                    rows="4"
+                    />
+                    {errors.content && <span className="text-red-600 text-sm">
+                        {errors.content.message}</span>}
+                </div>
 
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">{t('offerPrice')}</label>
+                    <input
+                    type="number"
+                    step="0.01"
+                    {...register('offerPrice')}
+                    className="mt-1 w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" 
+                    placeholder={t('enterOfferPrice')}
+                    />
+                </div>
+
+                {status && (
+                    <div className={`text-sm ${status.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+                        {status.message}
+                    </div>
+                )}
+
+                <button
+                type="submit"
+                className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition duration-200"
+                >
+                      {t('sendMessage')}
+                </button>
+        </from>
+        </div>
+    )
+}
 export default ContactSellerForm;

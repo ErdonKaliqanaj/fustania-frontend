@@ -1,37 +1,31 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import AdminLayout from './components/layouts/AdminLayout';
-import ClientLayout from './components/layouts/ClientLayout';
-import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from './components/LanguageSwitcher';
-import Register from './components/Register';
-import DressList from './components/DressList';
-import DressDetail from './components/DressDetail';
-import SellDress from './components/SellDress';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
+import ClientLayout from './layouts/ClientLayout';
+import AdminLayout from './layouts/AdminLayout';
+import ProfilePage from './pages/ProfilePage';
+import AdminDashboard from './pages/AdminDashboard';
+import DressDetailsPage from './pages/DressDetailsPage';
+import DressesPage from './pages/DressesPage';
 
-
-function App() {
-  const { t } = useTranslation();
-
+const App = () => {
   return (
-    <div className="min-h-screen">
-      <LanguageSwitcher />
+    <I18nextProvider i18n={i18n}>
       <Routes>
-        <Route path="/" element={<ClientLayout />}>
-          <Route path="profile" element={<h2>{t('profile')}</h2>} />
-          <Route path="publications" element={<h2>{t('publications')}</h2>} />
-          <Route path="register" element={<Register />} />
-          <Route path="dresses" element={<DressList />} />
-          <Route path="dresses/:id" element={<DressDetail />} />
-          <Route path="sell" element={<SellDress />} />
+        <Route element={<ClientLayout />}>
+          <Route path="/" element={<DressesPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/dresses" element={<DressesPage />} />
+          <Route path="/dresses/:id" element={<DressDetailsPage />} />
         </Route>
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="clients" element={<h2>{t('clients')}</h2>} />
-          <Route path="lists" element={<h2>{t('lists')}</h2>} />
+        <Route element={<AdminLayout />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/users" element={<AdminDashboard />} />
+          <Route path="/admin/dresses" element={<AdminDashboard />} />
         </Route>
       </Routes>
-    </div>
+    </I18nextProvider>
   );
-}
+};
 
 export default App;

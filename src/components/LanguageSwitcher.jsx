@@ -1,27 +1,22 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const LanguageSwitcher = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
 
   return (
-    <div className="p-4">
-      <button
-        onClick={() => changeLanguage('en')}
-        className="mr-2 px-2 py-1 bg-blue-500 text-white rounded"
+    <div className="fixed top-4 right-4 z-50">
+      <select
+        onChange={(e) => changeLanguage(e.target.value)}
+        className="p-2 border rounded-md bg-white shadow-sm"
+        value={i18n.language}
       >
-        {t('english')}
-      </button>
-      <button
-        onClick={() => changeLanguage('sq')}
-        className="px-2 py-1 bg-blue-500 text-white rounded"
-      >
-        {t('albanian')}
-      </button>
+        <option value="en">{t('language.english')}</option>
+        <option value="sq">{t('language.albanian')}</option>
+      </select>
     </div>
   );
 };
