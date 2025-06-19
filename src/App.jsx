@@ -3,11 +3,11 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import ClientLayout from './layouts/ClientLayout';
 import AdminLayout from './layouts/AdminLayout';
-import RegisterPage from './pages/RegisterPage';
 import DressesPage from './pages/DressesPage';
 import DressDetailsPage from './pages/DressDetailsPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/AdminDashboard';
+import RegisterForm from './components/RegisterForm';
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
       <Router>
         <Routes>
          
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<RegisterForm />} />
           <Route path="/dresses" element={<DressesPage />} />
           <Route path="/dresses/:id" element={<DressDetailsPage />} />
 
