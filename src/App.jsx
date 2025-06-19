@@ -7,7 +7,8 @@ import DressesPage from './pages/DressesPage';
 import DressDetailsPage from './pages/DressDetailsPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/AdminDashboard';
-import RegisterForm from './components/RegisterForm';
+import RegisterPage from './pages/RegisterPage';
+
 
 const App = () => {
   return (
