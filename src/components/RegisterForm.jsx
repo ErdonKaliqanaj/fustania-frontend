@@ -1,35 +1,14 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
-const RegisterForm = () => {
+const RegisterForm = ({ onSubmit, status }) => {
   const { t } = useTranslation();
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const [status, setStatus] = useState(null);
-
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post('http://localhost:8080/api/auth/register', {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        password: data.password,
-        address: data.address,
-        shteti: data.shteti,
-        role: data.role
-      });
-      setStatus({ type: 'success', message: t('register.success') });
-      reset();
-    } catch (error) {
-      setStatus({ type: 'error', message: error.response?.data || t('register.error') });
-    }
-  };
 
   return (
     <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">{t('register.submit')}</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit((data) => onSubmit(data, reset))} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">{t('register.firstName')}</label>
           <input
@@ -86,7 +65,9 @@ const RegisterForm = () => {
           >
             <option value="">{t('register.country')}</option>
             <option value="KOSOVE">{t('register.kosovo')}</option>
-            {/* Add Albania and Macedonia later */}
+            <option value="MACEDONIA">{t('register.macedonia')}</option>
+            <option value="ALBANIA">{t('register.albania')}</option>
+            
           </select>
           {errors.shteti && <span className="text-red-600 text-sm">{errors.shteti.message}</span>}
         </div>
