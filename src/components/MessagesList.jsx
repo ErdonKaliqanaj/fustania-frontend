@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
+
 
 const MessagesList = () => {
   const { t } = useTranslation();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [token] = useAuth();
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/messages/my-messages', {
-          headers: { Authorization: 'Bearer YOUR_TOKEN' }
+          headers: { Authorization:  `Bearer ${token}` }
         });
         setMessages(response.data);
         setLoading(false);
@@ -22,7 +25,7 @@ const MessagesList = () => {
       }
     };
     fetchMessages();
-  }, [t]);
+  }, [token, t]);
 
   if (loading) return <div className="text-center text-gray-600">{t('loading')}</div>;
   if (error) return <div className="text-center text-red-600">{error}</div>;

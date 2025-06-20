@@ -1,4 +1,4 @@
-import i18next, { init } from "i18next";
+import i18next from 'i18next';
 import { initReactI18next } from "react-i18next";
 import enTranslation from './assets/i18n/en.json';
 import sqTranslation from './assets/i18n/sq.json';
