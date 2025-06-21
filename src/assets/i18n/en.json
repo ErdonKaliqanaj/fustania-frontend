@@ -1,140 +1,97 @@
 {
-  "header": {
-    "home": "Home",
-    "profile": "Profile",
-    "dresses": "Dresses",
-    "logout": "Logout",
-    "login": "Login"
+  "app": {
+    "title": "Fustania"
   },
-  "sidebar": {
-    "userInfo": "User Information",
-    "myDresses": "My Dresses",
-    "myMessages": "My Messages"
+  "nav": {
+    "dresses": "Dresses",
+    "profile": "Profile",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "register": {
+    "submit": "Register",
+    "firstName": "First Name",
+    "firstNameRequired": "First Name is required",
+    "lastName": "Last Name",
+    "lastNameRequired": "Last Name is required",
+    "email": "Email",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Email is invalid",
+    "password": "Password",
+    "passwordRequired": "Password is required",
+    "address": "Address",
+    "addressRequired": "Address is required",
+    "country": "Country",
+    "countryRequired": "Country is required",
+    "kosovo": "Kosovo",
+    "albania": "Albania",
+    "macedonia": "Macedonia",
+    "role": "Role",
+    "roleRequired": "Role is required",
+    "seller": "Seller",
+    "buyer": "Buyer",
+    "success": "Registration successful",
+    "error": "Registration failed"
+  },
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "emailRequired": "Email is required",
+    "password": "Password",
+    "passwordRequired": "Password is required",
+    "submit": "Login",
+    "success": "Login successful",
+    "error": "Login failed"
   },
   "profilePage": {
-    "title": "My Profile",
-    "editProfile": "Edit Profile",
+    "title": "Profile",
     "dresses": "My Dresses",
-    "messages": "My Messages",
-    "addDress": "Add Dress",
+    "messages": "Messages",
     "noDresses": "No dresses found",
     "noMessages": "No messages found",
-    "delete": "Delete",
-    "edit": "Edit",
     "description": "Description",
     "price": "Price",
     "size": "Size",
     "color": "Color",
-    "location": "Location",
     "designer": "Designer",
-    "photos": "Photos",
-    "descriptionRequired": "Description is required",
-    "priceRequired": "Price is required",
-    "sizeRequired": "Size is required",
-    "colorRequired": "Color is required",
-    "cityRequired": "City is required",
-    "countryRequired": "Country is required",
-    "designerRequired": "Designer is required",
-    "photosRequired": "At least one photo is required",
-    "addSuccess": "Dress added successfully!",
-    "addError": "Failed to add dress. Please try again.",
-    "deleteSuccess": "Dress deleted successfully!",
-    "deleteError": "Failed to delete dress. Please try again."
-  },
-  "adminHeader": {
-    "dashboard": "Dashboard",
-    "users": "Users",
-    "dresses": "Dresses",
-    "logout": "Logout"
-  },
-  "adminSidebar": {
-    "adminTools": "Admin Tools",
-    "manageUsers": "Manage Users",
-    "manageDresses": "Manage Dresses"
-  },
-  "adminDashboard": {
-    "title": "Admin Dashboard",
-    "users": "Registered Users",
-    "allDresses": "All Dresses",
-    "noUsers": "No users found",
-    "noDresses": "No dresses found",
-    "email": "Email",
-    "name": "Name",
-    "role": "Role",
-    "country": "Country",
-     "actions": "Actions"
-  },
-  "footer": {
-    "copyright": "© 2025 Fustania. All rights reserved."
-  },
-  "auth": {
-    "pleaseLogin": "Please log in to access this page",
-    "unauthorized": "You must be logged in to add a dress"
-  },
-  "login": {
-    "submit": "Login",
-    "success": "Login successful!",
-    "error": "Login failed. Please check your credentials."
-  },
-  "language": {
-    "english": "English",
-    "albanian": "Albanian"
-  },
-  "loading": "Loading...",
-  "error": "An error occurred",
-  "register": {
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "email": "Email",
-    "password": "Password",
-    "address": "Address",
-    "country": "Country",
-    "role": "Role",
-    "seller": "Seller",
-    "buyer": "Buyer",
-    "kosovo": "Kosovo",
-    "albania": "Albania",
-    "macedonia": "Macedonia",
-    "submit": "Register",
-    "firstNameRequired": "First name is required",
-    "lastNameRequired": "Last name is required",
-    "emailRequired": "Email is required",
-    "emailInvalid": "Invalid email",
-    "passwordRequired": "Password is required",
-    "addressRequired": "Address is required",
-    "countryRequired": "Country is required",
-    "roleRequired": "Role is required",
-    "success": "Registration successful!",
-    "error": "Registration failed. Please try again."
-  },
-  "contactSeller": {
-    "title": "Contact Seller",
-    "content": "Message",
-    "offerPrice": "Offer Price",
-    "senderName": "Your Name",
-    "senderEmail": "Your Email",
-    "submit": "Send Message",
-    "contentRequired": "Message is required",
-    "senderNameRequired": "Name is required",
-    "senderEmailRequired": "Email is required",
-    "senderEmailInvalid": "Invalid email",
-    "offerPriceInvalid": "Offer price must be positive",
-    "success": "Message sent successfully!",
-    "error": "Failed to send message. Please try again."
+    "location": "Location",
+    "delete": "Delete",
+    "deleteError": "Failed to delete dress"
   },
   "dressesPage": {
     "title": "Dresses",
-    "designer": "Designer",
-    "size": "Size",
-    "maxPrice": "Max Price",
-    "color": "Color",
-    "city": "City",
-    "country": "Country",
-    "filter": "Filter",
     "noDresses": "No dresses found"
   },
   "dressDetails": {
     "sellerInfo": "Seller Information",
     "contactSeller": "Contact Seller"
-  }
+  },
+  "contactSeller": {
+    "title": "Contact Seller",
+    "senderName": "Your Name",
+    "senderNameRequired": "Name is required",
+    "senderEmail": "Your Email",
+    "senderEmailRequired": "Email is required",
+    "senderEmailInvalid": "Email is invalid",
+    "content": "Message",
+    "contentRequired": "Message is required",
+    "offerPrice": "Offer Price (€)",
+    "offerPriceInvalid": "Offer price must be positive",
+    "submit": "Send Message",
+    "success": "Message sent successfully",
+    "error": "Failed to send message"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "dresses": "Dresses"
+  },
+  "language": {
+    "english": "English",
+    "albanian": "Albanian"
+  },
+  "error": "An error occurred",
+  "loading": "Loading..."
 }

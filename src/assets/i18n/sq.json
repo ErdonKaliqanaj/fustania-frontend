@@ -1,140 +1,97 @@
 {
-  "header": {
-    "home": "Kryefaqja",
-    "profile": "Profili",
-    "dresses": "Fustane",
-    "logout": "Dil",
-     "login": "Kyçu"
+  "app": {
+    "title": "Fustania"
   },
-  "sidebar": {
-    "userInfo": "Informacioni për Përdoruesin",
-    "myDresses": "Fustanet e Mia",
-    "myMessages": "Mesazhet e Mia"
+  "nav": {
+    "dresses": "Fustanet",
+    "profile": "Profili",
+    "login": "Hyr",
+    "register": "Regjistrohu",
+    "logout": "Dil"
+  },
+  "register": {
+    "submit": "Regjistrohu",
+    "firstName": "Emri",
+    "firstNameRequired": "Emri është i detyrueshëm",
+    "lastName": "Mbiemri",
+    "lastNameRequired": "Mbiemri është i detyrueshëm",
+    "email": "Email",
+    "emailRequired": "Email është i detyrueshëm",
+    "emailInvalid": "Email është i pavlefshëm",
+    "password": "Fjalëkalimi",
+    "passwordRequired": "Fjalëkalimi është i detyrueshëm",
+    "address": "Adresa",
+    "addressRequired": "Adresa është e detyrueshme",
+    "country": "Shteti",
+    "countryRequired": "Shteti është i detyrueshëm",
+    "kosovo": "Kosovë",
+    "albania": "Shqipëri",
+    "macedonia": "Maqedoni",
+    "role": "Roli",
+    "roleRequired": "Roli është i detyrueshëm",
+    "seller": "Shitës",
+    "buyer": "Blerës",
+    "success": "Regjistrimi u krye me sukses",
+    "error": "Regjistrimi dështoi"
+  },
+  "login": {
+    "title": "Hyr",
+    "email": "Email",
+    "emailRequired": "Email është i detyrueshëm",
+    "password": "Fjalëkalimi",
+    "passwordRequired": "Fjalëkalimi është i detyrueshëm",
+    "submit": "Hyr",
+    "success": "Hyrja u krye me sukses",
+    "error": "Hyrja dështoi"
   },
   "profilePage": {
-    "title": "Profili im",
-    "editProfile": "Ndrysho Profilin",
+    "title": "Profili",
     "dresses": "Fustanet e Mia",
-    "messages": "Mesazhet e Mia",
-    "addDress": "Shto Fustan",
+    "messages": "Mesazhet",
     "noDresses": "Nuk u gjetën fustane",
     "noMessages": "Nuk u gjetën mesazhe",
-    "delete": "Fshi",
-    "edit": "Ndrysho",
     "description": "Përshkrimi",
     "price": "Çmimi",
     "size": "Madhësia",
     "color": "Ngjyra",
+    "designer": "Dizajneri",
     "location": "Vendndodhja",
-    "designer": "Dizajner",
-    "photos": "Fotot",
-    "descriptionRequired": "Përshkrimi është i detyrueshëm",
-    "priceRequired": "Çmimi është i detyrueshëm",
-    "sizeRequired": "Madhësia është e detyrueshme",
-    "colorRequired": "Ngjyra është e detyrueshme",
-    "cityRequired": "Qyteti është i detyrueshëm",
-    "countryRequired": "Shteti është i detyrueshëm",
-    "designerRequired": "Dizajneri është i detyrueshëm",
-    "photosRequired": "Të paktën një foto është e detyrueshme",
-    "addSuccess": "Fustani u shtua me sukses!",
-    "addError": "Dështoi shtimi i fustanit. Ju lutem provoni përsëri.",
-    "deleteSuccess": "Fustani u fshi me sukses!",
-    "deleteError": "Dështoi fshirja e fustanit. Ju lutem provoni përsëri."
-  },
-  "adminHeader": {
-    "dashboard": "Paneli",
-    "users": "Përdoruesit",
-    "dresses": "Fustane",
-    "logout": "Dil"
-  },
-  "adminSidebar": {
-    "adminTools": "Vegla të Administratës",
-    "manageUsers": "Menaxho Përdoruesit",
-    "manageDresses": "Menaxho Fustanet"
-  },
-  "adminDashboard": {
-    "title": "Paneli i Administratës",
-    "users": "Përdorues të Regjistruar",
-    "allDresses": "Të Gjitha Fustanet",
-    "noUsers": "Nuk u gjetën përdorues",
-    "noDresses": "Nuk u gjetën fustane",
-    "email": "Email",
-    "name": "Emri",
-    "role": "Roli",
-    "country": "Shteti",
-     "actions": "Veprimet"
-  },
-  "footer": {
-    "copyright": "© 2025 Fustania. Të gjitha të drejtat e rezervuara."
-  },
-  "language": {
-    "english": "Anglisht",
-    "albanian": "Shqip"
-  },
-  "login": {
-    "submit": "Kyçu",
-    "success": "Kyçja u krye me sukses!",
-    "error": "Kyçja dështoi. Ju lutem kontrolloni kredencialet."
-  },
-  "auth": {
-    "pleaseLogin": "Ju lutem kyçuni për të hyrë në këtë faqe",
-    "unauthorized": "Duhet të jeni të kyçur për të shtuar një fustan"
-  },
-  "loading": "Duke u ngarkuar...",
-  "error": "Ndodhi një gabim",
-  "register": {
-    "firstName": "Emri",
-    "lastName": "Mbiemri",
-    "email": "Email",
-    "password": "Fjalëkalimi",
-    "address": "Adresa",
-    "country": "Shteti",
-    "role": "Roli",
-    "seller": "Shitës",
-    "buyer": "Blerës",
-    "kosovo": "Kosovë",
-    "albania": "Shqipëri",
-    "macedonia": "Maqedoni",
-    "submit": "Regjistrohu",
-    "firstNameRequired": "Emri është i detyrueshëm",
-    "lastNameRequired": "Mbiemri është i detyrueshëm",
-    "emailRequired": "Email është i detyrueshëm",
-    "emailInvalid": "Email i pavlefshëm",
-    "passwordRequired": "Fjalëkalimi është i detyrueshëm",
-    "addressRequired": "Adresa është e detyrueshme",
-    "countryRequired": "Shteti është i detyrueshëm",
-    "roleRequired": "Roli është i detyrueshëm",
-    "success": "Regjistrimi u krye me sukses!",
-    "error": "Regjistrimi dështoi. Ju lutem provoni përsëri."
-  },
-  "contactSeller": {
-    "title": "Kontakto Shitësin",
-    "content": "Mesazhi",
-    "offerPrice": "Çmimi i Ofertës",
-    "senderName": "Emri Juaj",
-    "senderEmail": "Email Juaj",
-    "submit": "Dërgo Mesazhin",
-    "contentRequired": "Mesazhi është i detyrueshëm",
-    "senderNameRequired": "Emri është i detyrueshëm",
-    "senderEmailRequired": "Email është i detyrueshëm",
-    "senderEmailInvalid": "Email i pavlefshëm",
-    "offerPriceInvalid": "Çmimi i ofertës duhet të jetë pozitiv",
-    "success": "Mesazhi u dërgua me sukses!",
-    "error": "Dështoi dërgimi i mesazhit. Ju lutem provoni përsëri."
+    "delete": "Fshi",
+    "deleteError": "Dështoi fshirja e fustanit"
   },
   "dressesPage": {
-    "title": "Fustane",
-    "designer": "Dizajner",
-    "size": "Madhësia",
-    "maxPrice": "Çmimi Maksimal",
-    "color": "Ngjyra",
-    "city": "Qyteti",
-    "country": "Shteti",
-    "filter": "Filtro",
+    "title": "Fustanet",
     "noDresses": "Nuk u gjetën fustane"
   },
   "dressDetails": {
     "sellerInfo": "Informacioni i Shitësit",
     "contactSeller": "Kontakto Shitësin"
-  }
+  },
+  "contactSeller": {
+    "title": "Kontakto Shitësin",
+    "senderName": "Emri Juaj",
+    "senderNameRequired": "Emri është i detyrueshëm",
+    "senderEmail": "Email Juaj",
+    "senderEmailRequired": "Email është i detyrueshëm",
+    "senderEmailInvalid": "Email është i pavlefshëm",
+    "content": "Mesazhi",
+    "contentRequired": "Mesazhi është i detyrueshëm",
+    "offerPrice": "Çmimi i Ofertës (€)",
+    "offerPriceInvalid": "Çmimi i ofertës duhet të jetë pozitiv",
+    "submit": "Dërgo Mesazhin",
+    "success": "Mesazhi u dërgua me sukses",
+    "error": "Dështoi dërgimi i mesazhit"
+  },
+  "admin": {
+    "title": "Paneli i Administratorit",
+    "dashboard": "Paneli",
+    "users": "Përdoruesit",
+    "dresses": "Fustanet"
+  },
+  "language": {
+    "english": "Anglisht",
+    "albanian": "Shqip"
+  },
+  "error": "Ndodhi një gabim",
+  "loading": "Duke u ngarkuar..."
 }
